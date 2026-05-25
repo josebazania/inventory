@@ -1,73 +1,122 @@
-# React + TypeScript + Vite
+# 📦 Sistema de Inventario con React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un sistema de inventario básico pero funcional desarrollado con **React** y **TypeScript**, diseñado para gestionar productos, cantidades y precios de manera sencilla e intuitiva.
 
-Currently, two official plugins are available:
+## ✨ Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- ➕ **Agregar productos**: Añade nuevos items con nombre, cantidad y precio
+- 📋 **Listado completo**: Visualiza todos los productos en una tabla organizada
+- ➖➕ **Control de stock**: Aumenta o disminuye cantidades con botones dedicados
+- 🗑️ **Eliminar productos**: Remueve items del inventario fácilmente
+- 💰 **Cálculos automáticos**: 
+  - Total de items en inventario
+  - Valor total del inventario (suma de cantidad × precio)
+- 🎨 **Interfaz limpia**: Diseño moderno y responsive con CSS personalizado
+- 🇪🇸 **Interfaz en español**: Completamente localizado para usuarios hispanohablantes
 
-## React Compiler
+## 🚀 Tecnologías Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** - Biblioteca para construir interfaces de usuario
+- **TypeScript** - Tipado estático para mayor seguridad y mantenibilidad
+- **CSS3** - Estilos personalizados sin dependencias externas
+- **Vite** - Build tool rápido y ligero
 
-## Expanding the ESLint configuration
+## 📁 Estructura del Proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── types.ts          # Definiciones de tipos TypeScript
+│   ├── ItemForm.tsx      # Formulario para agregar productos
+│   ├── ItemForm.css      # Estilos del formulario
+│   ├── ItemList.tsx      # Tabla de listado de inventario
+│   └── ItemList.css      # Estilos de la tabla
+├── App.tsx               # Componente principal con estado global
+├── App.css               # Estilos generales de la aplicación
+└── main.tsx              # Punto de entrada
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Instalación y Uso
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerrequisitos
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Node.js (versión 16 o superior)
+- npm o yarn
+
+### Pasos de instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone <url-del-repositorio>
+   cd <nombre-del-proyecto>
+   ```
+
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar en modo desarrollo**
+   ```bash
+   npm run dev
+   ```
+
+4. **Abrir en el navegador**
+   
+   La aplicación estará disponible en `http://localhost:5173` (o el puerto que indique Vite)
+
+### Comandos disponibles
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Inicia el servidor de desarrollo |
+| `npm run build` | Compila el proyecto para producción |
+| `npm run preview` | Vista previa de la build de producción |
+
+## 📖 Cómo Usar
+
+1. **Agregar un producto**: 
+   - Completa los campos: Nombre, Cantidad y Precio
+   - Haz clic en "Agregar Producto"
+
+2. **Gestionar stock**:
+   - Usa los botones `+` y `−` para ajustar cantidades
+   - Las cantidades no pueden ser negativas
+
+3. **Eliminar productos**:
+   - Haz clic en el botón "Eliminar" para remover un item
+
+4. **Ver totales**:
+   - El panel superior muestra automáticamente:
+     - Total de items únicos
+     - Cantidad total de productos
+     - Valor total del inventario
+
+## 🎯 Datos de Ejemplo
+
+La aplicación incluye algunos productos de ejemplo al iniciar:
+- Laptop (10 unidades - $999.99)
+- Mouse (50 unidades - $29.99)
+- Teclado (30 unidades - $79.99)
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Si deseas mejorar este proyecto:
+
+1. Fork el proyecto
+2. Crea una rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'Añadir nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+
+## 👨‍💻 Autor
+
+Desarrollado como demostración de las capacidades de React y TypeScript para la gestión de estados y componentes.
+
+---
+
+**¡Disfruta gestionando tu inventario! 📊**
